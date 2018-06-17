@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+<!-- elements will be in an order specified (renderer*,appender*,(category|logger)*,root?,categoryFactory?) -->
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="target" value="System.out" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%t] %c{1}.%M %3x - %m%n" />
+        </layout>
+    </appender>
+
+    <appender name="file" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="edisk.log" />
+        <param name="maxFileSize" value="100KB" />
+        <param name="maxBackupIndex" value="10" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d %-5p [%t] %c{1}.%M %3x - %m%n" />
+        </layout>
+    </appender>
+
+    <logger name="edisk" additivity="false">
+        <level value="DEBUG" />
+        <appender-ref ref="console" />
+    </logger>
+
+    <root>
+        <level value="DEBUG" />
+        <appender-ref ref="file" />
+    </root>
+
+</log4j:configuration>

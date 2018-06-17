@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="edisk" default="compile" basedir=".">
+    <!-- ================= PROPERTIES ================ -->
+
+    <property environment="env" />
+    <property file="build.properties" />
+    <property name="build.dir" value=".build" />
+    <property name="src.dir" value="src" />
+    <property name="lib.dir" value="lib" />
+    <path id="cp">
+        <fileset dir="${lib.dir}" includes="**/*.jar" />
+    </path>
+
+    <!-- ================= TARGETS =================== -->
+
+    <target name="all" depends="run" />
+
+    <!-- ================= CLEAN ===================== -->
+
+    <target name="clean">
+        <delete dir="${build.dir}" />
+    </target>
+
+    <!-- ================= INIT ====================== -->
+
+    <target name="init" depends="clean">
+        <mkdir dir="${build.dir}" />
+        <copy todir="${build.dir}">
+            <fileset dir="${src.dir}" includes="**/*.properties, **/*.xml" />
+        </copy>
+        <native2ascii dest="${build.dir}" src="${src.dir}" encoding="Cp1251" includes="**/*.cp1251"
+            ext=".properties" />
+    </target>
+
+    <!-- ================= COMPILE =================== -->
+    <splash imageurl="file:///d:/downloads/buggy_scratching_head_lg_nwm.gif" />
+    <target name="compile" depends="init">
+        <javac srcdir="${src.dir}" destdir="${build.dir}" includeantruntime="false" classpathref="cp" />
+    </target>
+
+    <!-- ================= RUN ======================= -->
+
+    <target name="run" depends="compile">
+        <java classname="edisk.App" classpathref="cp">
+            <classpath path="${build.dir}" />
+        </java>
+    </target>
+
+</project>

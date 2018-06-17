@@ -3,7 +3,13 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="stdprn" class="edisk.service.StdPrinter" />
+    <bean id="loc" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="location" value="classpath:config.properties" />
+    </bean>
+
+    <bean id="stdprn" class="edisk.service.StdPrinter">
+        <!-- constructor-arg value="${outfile}" / -->
+    </bean>
 
     <bean id="hello" class="edisk.service.HelloServiceImpl">
         <constructor-arg ref="stdprn" />
