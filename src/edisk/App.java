@@ -12,14 +12,16 @@ public class App {
 
     public static void main(String[] args) {
 
+//        System.setSecurityManager(null);
         final ApplicationContext ctx = new ClassPathXmlApplicationContext("classpath:/config.xml");
 
         // final HelloService srv = ctx.getBean(HelloService.class);
-        final Printer srv = ctx.getBean(Printer.class);
+        // final Printer srv = ctx.getBean(Printer.class);
 
-        srv.print("Hello!!!");
+        // srv.print("Hello!!!");
 
-        log.info("{} {}!!!", 555, "Logger");
+        log.info("Start app INFO {}!!", "Logger");
+        log.debug("Start app DEBUG {}!?", "Logger");
 
         ((ClassPathXmlApplicationContext) ctx).close();
     }

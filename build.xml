@@ -5,6 +5,7 @@
     <property environment="env" />
     <property file="build.properties" />
     <property name="build.dir" value=".build" />
+    <property name="derby.dir" value=".derby" />
     <property name="src.dir" value="src" />
     <property name="lib.dir" value="lib" />
     <path id="cp">
@@ -19,6 +20,7 @@
 
     <target name="clean">
         <delete dir="${build.dir}" />
+        <delete dir="${derby.dir}" />
     </target>
 
     <!-- ================= INIT ====================== -->

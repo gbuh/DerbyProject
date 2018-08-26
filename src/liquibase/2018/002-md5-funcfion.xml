@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd"
+        logicalFilePath="002-md5-function.xml">
+
+    <changeSet id="1.2.0" author="igor" context="derby">
+        <createProcedure>
+            CREATE FUNCTION MD5(str VARCHAR(100)) RETURNS VARCHAR(100)
+            PARAMETER STYLE JAVA
+            NO SQL LANGUAGE
+            JAVA
+            EXTERNAL NAME 'edisk.util.MD5.md5';
+        </createProcedure>
+    </changeSet>
+
+</databaseChangeLog>
