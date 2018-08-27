@@ -15,34 +15,41 @@ public class UserMDaoImpl extends BaseDaoImpl implements UserMDao {
     @Override
     public void create(UserM userM) {// if returned value Long then resultset needed
         String sql =
-                "INSERT INTO userm (user_name, user_email, user_password, user_role) VALUES (?, ?, ?, ?)";
+                "INSERT INTO userm (user_id, user_name, user_email, user_password, user_role) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement ps = null;
-        // ResultSet rs = null;
+        ResultSet rs = null;
         try {
             ps = getConnection().prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-            ps.setString(1, userM.getName());
-            ps.setString(2, userM.getEmail());
-            ps.setString(3, userM.getPassword());
-            ps.setString(4, userM.getRole());
+            Long id = null;
+            rs = ps.getGeneratedKeys();
+            if (rs != null && rs.next()) {
+                id = rs.getLong(1);
+            } else {
+                id = userM.getId();
+            }
+            ps.setLong(1, id);
+            ps.setString(2, userM.getName());
+            ps.setString(3, userM.getEmail());
+            ps.setString(4, userM.getPassword());
+            ps.setString(5, userM.getRole());
             ps.executeUpdate();
-            // Long id = null;
-            // rs = ps.getGeneratedKeys();
-            // if (rs.next()) {
-            // id = rs.getLong(1);
-            // }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             try {
-                ps.close();
+                if (ps != null) {
+                    ps.close();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            // try {
-            // rs.close();
-            // } catch (SQLException e) {
-            // e.printStackTrace();
-            // }
+            try {
+                if(rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -68,12 +75,16 @@ public class UserMDaoImpl extends BaseDaoImpl implements UserMDao {
             e.printStackTrace();
         } finally {
             try {
-                ps.close();
+                if (ps != null) {
+                    ps.close();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             try {
-                rs.close();
+                if(rs != null) {
+                    rs.close();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -103,26 +114,28 @@ public class UserMDaoImpl extends BaseDaoImpl implements UserMDao {
             ps = getConnection().prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                for (UserM user : userMs) {
-                    user = new UserM();
-                    user.setId(rs.getLong("id"));
-                    user.setName(rs.getString("user_name"));
-                    user.setEmail(rs.getString("user_email"));
-                    user.setPassword(rs.getString("user_password"));
-                    user.setRole(rs.getString("user_role"));
-                    userMs.add(user);
-                }
+                UserM user = new UserM();
+                user.setId(rs.getLong("user_id"));
+                user.setName(rs.getString("user_name"));
+                user.setEmail(rs.getString("user_email"));
+                user.setPassword(rs.getString("user_password"));
+                user.setRole(rs.getString("user_role"));
+                userMs.add(user);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
             try {
-                ps.close();
+                if (ps != null) {
+                    ps.close();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }
             try {
-                rs.close();
+                if(rs != null) {
+                    rs.close();
+                }
             } catch (SQLException e) {
                 e.printStackTrace();
             }

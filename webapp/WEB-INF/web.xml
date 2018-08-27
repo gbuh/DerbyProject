@@ -14,7 +14,7 @@
 
     <servlet-mapping>
         <servlet-name>UserListController</servlet-name>
-        <url-pattern>/users/list.html</url-pattern>
+        <url-pattern>/users/list</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -24,7 +24,7 @@
 
     <servlet-mapping>
         <servlet-name>UserEditController</servlet-name>
-        <url-pattern>/user/edit.html</url-pattern>
+        <url-pattern>/user/edit</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -34,7 +34,7 @@
 
     <servlet-mapping>
         <servlet-name>UserSaveController</servlet-name>
-        <url-pattern>/user/save.html</url-pattern>
+        <url-pattern>/user/save</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -44,7 +44,7 @@
 
     <servlet-mapping>
         <servlet-name>UserDeleteController</servlet-name>
-        <url-pattern>/user/delete.html</url-pattern>
+        <url-pattern>/user/delete</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>
