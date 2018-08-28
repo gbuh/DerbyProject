@@ -1,0 +1,4 @@
+/webapp/WEB-INF/classes/
+.*
+*.log
+!.gitignore
