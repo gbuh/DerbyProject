@@ -27,16 +27,16 @@ public class H2Connector implements Connector {
                 "INSERT INTO userm (user_id, user_name, user_email, user_password, user_role) VALUES (1, 'Igor', 'igor@mail.ru', '12345', 'admin')";
         String ins2 =
                 "INSERT INTO userm (user_id, user_name, user_email, user_password, user_role) VALUES (2, 'Harry', 'harry@mail.ru', '12345', 'user')";
+
         try {
-            Class.forName("org.h2.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:h2:mem:.testdb");
+            Connection connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.executeUpdate();
             PreparedStatement ps1 = connection.prepareStatement(ins1);
             ps1.executeUpdate();
             PreparedStatement ps2 = connection.prepareStatement(ins2);
             ps2.executeUpdate();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }

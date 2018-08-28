@@ -7,6 +7,10 @@
 
     <display-name>Web Application</display-name>
 
+    <listener>
+        <listener-class>mvc.ContextListener</listener-class>
+    </listener>
+
     <servlet>
       <servlet-name>UserListController</servlet-name>
       <servlet-class>controller.UserListController</servlet-class>
@@ -18,6 +22,16 @@
     </servlet-mapping>
 
     <servlet>
+      <servlet-name>UserDeleteController</servlet-name>
+      <servlet-class>controller.UserDeleteController</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>UserDeleteController</servlet-name>
+        <url-pattern>/users/delete</url-pattern>
+    </servlet-mapping>
+
+    <!-- servlet>
       <servlet-name>UserEditController</servlet-name>
       <servlet-class>controller.UserEditController</servlet-class>
     </servlet>
@@ -35,17 +49,7 @@
     <servlet-mapping>
         <servlet-name>UserSaveController</servlet-name>
         <url-pattern>/user/save</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-      <servlet-name>UserDeleteController</servlet-name>
-      <servlet-class>controller.UserDeleteController</servlet-class>
-    </servlet>
-
-    <servlet-mapping>
-        <servlet-name>UserDeleteController</servlet-name>
-        <url-pattern>/user/delete</url-pattern>
-    </servlet-mapping>
+    </servlet-mapping -->
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

@@ -44,7 +44,7 @@ public class UserMDaoImpl extends BaseDaoImpl implements UserMDao {
                 e.printStackTrace();
             }
             try {
-                if(rs != null) {
+                if (rs != null) {
                     rs.close();
                 }
             } catch (SQLException e) {
@@ -82,7 +82,7 @@ public class UserMDaoImpl extends BaseDaoImpl implements UserMDao {
                 e.printStackTrace();
             }
             try {
-                if(rs != null) {
+                if (rs != null) {
                     rs.close();
                 }
             } catch (SQLException e) {
@@ -100,8 +100,23 @@ public class UserMDaoImpl extends BaseDaoImpl implements UserMDao {
 
     @Override
     public void delete(Long id) {
-        // TODO Auto-generated method stub
-
+        String sql = "DELETE FROM userm WHERE user_id = ?";
+        PreparedStatement ps = null;
+        try {
+            ps = getConnection().prepareStatement(sql);
+            ps.setLong(1, id);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -133,7 +148,7 @@ public class UserMDaoImpl extends BaseDaoImpl implements UserMDao {
                 e.printStackTrace();
             }
             try {
-                if(rs != null) {
+                if (rs != null) {
                     rs.close();
                 }
             } catch (SQLException e) {
@@ -142,5 +157,4 @@ public class UserMDaoImpl extends BaseDaoImpl implements UserMDao {
         }
         return userMs;
     }
-
 }

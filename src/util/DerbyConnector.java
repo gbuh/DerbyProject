@@ -7,10 +7,9 @@ import java.sql.SQLException;
 
 public class DerbyConnector implements Connector {
 
-    private Connection connection = null;
-
     @Override
     public Connection getConnection() {
+        Connection connection = null;
         try {
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
             connection = DriverManager.getConnection("jdbc:derby:.testdb;create=true");
@@ -28,7 +27,10 @@ public class DerbyConnector implements Connector {
                 "INSERT INTO userm (user_id, user_name, user_email, user_password, user_role) VALUES (1, 'Igor', 'igor@mail.ru', '12345', 'admin')";
         String ins2 =
                 "INSERT INTO userm (user_id, user_name, user_email, user_password, user_role) VALUES (2, 'Harry', 'harry@mail.ru', '12345', 'user')";
+
+        Connection connection = null;
         try {
+            connection = getConnection();
             PreparedStatement ps = connection.prepareStatement(sql);
             ps.executeUpdate();
             PreparedStatement ps1 = connection.prepareStatement(ins1);
@@ -37,6 +39,13 @@ public class DerbyConnector implements Connector {
             ps2.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (Exception e) {
+            }
         }
     }
 }
