@@ -1,4 +1,4 @@
-package controller;
+package mvc.controller;
 
 import service.UserMService;
 import java.io.IOException;
