@@ -7,11 +7,12 @@ import util.Connector;
 import util.H2Connector;
 
 import java.sql.Connection;
+import java.util.HashMap;
 import java.util.Map;
 
 public class SimpleApplicationContext implements ApplicationContext {
 
-    private Map<Class<?>, Object> map;
+    private Map<Class<?>, Object> map = new HashMap<>();
 
     @Override
     @SuppressWarnings("unchecked")

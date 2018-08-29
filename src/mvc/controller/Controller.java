@@ -2,6 +2,7 @@ package mvc.controller;
 
 import common.ApplicationContext;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.ServletConfig;
@@ -13,7 +14,7 @@ public class Controller extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
 
-    private Map<Class<?>, Convertor<?>> map;
+    private Map<Class<?>, Convertor<?>> map = new HashMap<>();
 
     private ApplicationContext ctx;
 

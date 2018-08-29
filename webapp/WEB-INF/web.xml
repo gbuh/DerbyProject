@@ -13,7 +13,7 @@
 
     <servlet>
       <servlet-name>UserListController</servlet-name>
-      <servlet-class>controller.UserListController</servlet-class>
+      <servlet-class>mvc.controller.UserListController</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -23,7 +23,7 @@
 
     <servlet>
       <servlet-name>UserDeleteController</servlet-name>
-      <servlet-class>controller.UserDeleteController</servlet-class>
+      <servlet-class>mvc.controller.UserDeleteController</servlet-class>
     </servlet>
 
     <servlet-mapping>
