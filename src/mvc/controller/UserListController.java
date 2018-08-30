@@ -28,14 +28,8 @@ public class UserListController extends Controller {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         UserM userM = new UserM();
-/*
-        try {
-            userM.setId(Long.parseLong(req.getParameter("id")));
-        } catch (NumberFormatException e) {
-        }
-*/
-        userM.setId(getParam(req, "id", Long.class));
 
+        userM.setId(getParam(req, "id", Long.class));
         userM.setName(req.getParameter("name"));
         userM.setEmail(req.getParameter("email"));
         userM.setPassword(req.getParameter("password"));

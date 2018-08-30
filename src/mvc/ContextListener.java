@@ -9,7 +9,7 @@ public class ContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        ServletContextListener.super.contextInitialized(sce);
+        // ServletContextListener.super.contextInitialized(sce);
 
         SimpleApplicationContext ctx = new SimpleApplicationContext();
         ctx.init();
@@ -18,6 +18,6 @@ public class ContextListener implements ServletContextListener {
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        ServletContextListener.super.contextDestroyed(sce);
+        // ServletContextListener.super.contextDestroyed(sce);
     }
 }

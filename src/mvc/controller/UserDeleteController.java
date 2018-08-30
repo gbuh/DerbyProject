@@ -14,7 +14,7 @@ public class UserDeleteController extends Controller {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         try {
-            Long id = Long.parseLong(req.getParameter("id"));
+            Long id = getParam(req, "id", Long.class);
             UserMService service = getApplicationContext().getBean(UserMService.class);
             service.delete(id);
         } catch (NumberFormatException e) {

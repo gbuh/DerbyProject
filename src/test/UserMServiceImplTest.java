@@ -4,16 +4,16 @@ import dao.impl.UserMDaoImpl;
 import entity.UserM;
 import service.impl.UserMServiceImpl;
 import util.Connector;
-import util.DerbyConnector;
+import util.H2Connector;
 
 import java.util.List;
 
 public class UserMServiceImplTest {
     public static void main(String[] args) {
 
-        Connector connector = new DerbyConnector();
-        connector.getConnection();
-        //connector.init();
+        Connector connector = new H2Connector();
+        //connector.getConnection();
+        connector.init();
 
         UserMDaoImpl dao = new UserMDaoImpl();
         dao.setConnection(connector.getConnection());
@@ -29,6 +29,13 @@ public class UserMServiceImplTest {
         service.insert(userM);
 
         List<UserM> users = service.findAll();
+        for (UserM user : users) {
+            output(user);
+        }
+
+        service.delete(3L);
+        
+        users = service.findAll();
         for (UserM user : users) {
             output(user);
         }

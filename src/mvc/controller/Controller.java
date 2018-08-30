@@ -27,22 +27,20 @@ public class Controller extends HttpServlet {
         super.init(config);
         ctx = (ApplicationContext) config.getServletContext().getAttribute("ctx");
 
-        map.put(String.class, (p) -> {return p;});
-        map.put(Long.class,   (p) -> {
-            //try {
-                return Long.parseLong(p);
-            //} catch (NumberFormatException e) {
-            //}
-            //return null;
+        map.put(String.class, (p) -> {
+            return p;
+        });
+        map.put(Long.class, (p) -> {
+            return Long.parseLong(p.trim());
         });
     }
 
     @SuppressWarnings("unchecked")
     protected <T> T getParam(HttpServletRequest req, String param, Class<T> clazz) {
-        return (T) map.get(clazz).convert(param);
+        return (T) map.get(clazz).convert(req.getParameter(param));
     }
 
     public static interface Convertor<T> {
-         T convert(String param);
+        T convert(String param);
     }
 }
