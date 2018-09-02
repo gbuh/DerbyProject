@@ -31,17 +31,17 @@
         <url-pattern>/users/delete</url-pattern>
     </servlet-mapping>
 
-    <!-- servlet>
+    <servlet>
       <servlet-name>UserEditController</servlet-name>
-      <servlet-class>controller.UserEditController</servlet-class>
+      <servlet-class>mvc.controller.UserEditController</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>UserEditController</servlet-name>
-        <url-pattern>/user/edit</url-pattern>
+        <url-pattern>/users/edit</url-pattern>
     </servlet-mapping>
 
-    <servlet>
+    <!-- servlet>
       <servlet-name>UserSaveController</servlet-name>
       <servlet-class>controller.UserSaveController</servlet-class>
     </servlet>

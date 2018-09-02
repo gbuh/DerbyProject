@@ -94,8 +94,37 @@ public class UserMDaoImpl extends BaseDaoImpl implements UserMDao {
 
     @Override
     public void update(UserM userM) {
-        // TODO Auto-generated method stub
-
+        String sql =
+                "UPDATE userm SET user_name = ?, user_email = ?, user_password = ?, user_role = ? WHERE user_id = ?)";
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            ps = getConnection().prepareStatement(sql);
+            
+            ps.setString(1, userM.getName());
+            ps.setString(2, userM.getEmail());
+            ps.setString(3, userM.getPassword());
+            ps.setString(4, userM.getRole());
+            ps.setLong(5, userM.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
