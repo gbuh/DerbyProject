@@ -27,12 +27,8 @@ public class Controller extends HttpServlet {
         super.init(config);
         ctx = (ApplicationContext) config.getServletContext().getAttribute("ctx");
 
-        map.put(String.class, (p) -> {
-            return p;
-        });
-        map.put(Long.class, (p) -> {
-            return Long.parseLong(p.trim());
-        });
+        map.put(String.class, (p) -> p);
+        map.put(Long.class, (p) -> Long.parseLong(p.trim()));
     }
 
     @SuppressWarnings("unchecked")
