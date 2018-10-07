@@ -7,7 +7,7 @@ import org.springframework.util.ReflectionUtils;
 import java.lang.reflect.Field;
 import java.util.Random;
 
-public class InjectParametrIntAnnotationBeanPostprocessor implements BeanPostProcessor {
+public class InjectParametrIntAnnotationBeanPostProcessor implements BeanPostProcessor {
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
@@ -30,5 +30,4 @@ public class InjectParametrIntAnnotationBeanPostprocessor implements BeanPostPro
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         return bean;
     }
-
 }

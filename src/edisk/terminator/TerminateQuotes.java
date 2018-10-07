@@ -1,10 +1,16 @@
 package edisk.terminator;
 
-public class TerminateQuoters implements Quotes {
+public class TerminateQuotes implements Quotes {
+
     @InjectRandomInt(min = 2, max = 7)
     private int repeat;
 
-    String message;
+    private String message;
+
+    public TerminateQuotes() {
+        super();
+        this.message = "Hello!";
+    }
 
     public void setMessage(String message) {
         this.message = message;
